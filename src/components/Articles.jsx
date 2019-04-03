@@ -33,20 +33,17 @@ class Articles extends Component {
   componentDidMount() {
     this.getArticlesData();
   }
-  componentDidUpdate() {
-    if (this.props.slug) {
-      const url = `https://holly-nc-news.herokuapp.com/api/articles?topic=${
-        this.props.slug
-      }`;
-      axios.get(url).then(res => {
-        this.setState({ articles: res.data.articles });
-      });
-    } else {
+  componentDidUpdate(prevProps) {
+    if (this.props.slug !== prevProps.slug) {
       this.getArticlesData();
     }
   }
   getArticlesData = () => {
-    const url = `https://holly-nc-news.herokuapp.com/api/articles`;
+    const url = this.props.slug
+      ? `https://holly-nc-news.herokuapp.com/api/articles?topic=${
+          this.props.slug
+        }`
+      : `https://holly-nc-news.herokuapp.com/api/articles`;
     axios.get(url).then(res => {
       this.setState({ articles: res.data.articles });
     });
