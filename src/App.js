@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
 import { Router } from '@reach/router';
-import Home from './components/Home';
+import Article from './components/Article';
+import Articles from './components/Home';
 
 class App extends Component {
   render() {
@@ -10,7 +11,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <Router>
-          <Home path="home" />
+          <Articles path="articles" />
+          <Article path="articles/:article_id" />
         </Router>
       </div>
     );
