@@ -13,12 +13,14 @@ class Articles extends Component {
 
         {this.state.articles.map(article => {
           return (
-            <article>
+            <article key={article.article_id}>
               <h3>{article.title}</h3>
               <h4>by {article.author}</h4>
               <p>Topic: {article.topic}</p>
               <p>{article.body.slice(0, 50)}...</p>
-              <Link to={`${article.article_id}`}>Read full article</Link>
+              <Link to={`/articles/${article.article_id}`}>
+                Read full article
+              </Link>
               <p>
                 Votes {article.votes} | Comments {article.comment_count}
               </p>
@@ -29,9 +31,21 @@ class Articles extends Component {
     );
   }
   componentDidMount() {
-    this.getAllArticlesData();
+    this.getArticlesData();
   }
-  getAllArticlesData = () => {
+  componentDidUpdate() {
+    if (this.props.slug) {
+      const url = `https://holly-nc-news.herokuapp.com/api/articles?topic=${
+        this.props.slug
+      }`;
+      axios.get(url).then(res => {
+        this.setState({ articles: res.data.articles });
+      });
+    } else {
+      this.getArticlesData();
+    }
+  }
+  getArticlesData = () => {
     const url = `https://holly-nc-news.herokuapp.com/api/articles`;
     axios.get(url).then(res => {
       this.setState({ articles: res.data.articles });
