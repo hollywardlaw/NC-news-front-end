@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 import { Link } from '@reach/router';
 import { getArticles } from '../api.js';
 

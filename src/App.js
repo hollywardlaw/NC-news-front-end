@@ -7,12 +7,18 @@ import Articles from './components/Articles';
 import Topics from './components/Topics';
 
 class App extends Component {
+  state = {
+    user: null
+  };
   render() {
+    console.log(this.state.user);
+    const { user } = this.state;
     return (
       <div className="App">
-        <Header />
+        <Header user={user} setUser={this.setUser} logOut={this.logOut} />
         <Topics />
         <Router>
+          <Articles path="/" />
           <Articles path="articles" />
           <Articles path="articles/topics/:slug" />
           <Article path="articles/:article_id" />
@@ -20,6 +26,12 @@ class App extends Component {
       </div>
     );
   }
+  setUser = user => {
+    this.setState({ user });
+  };
+  logOut = () => {
+    this.setState({ user: null });
+  };
 }
 
 export default App;
