@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from '@reach/router';
+import { getTopics } from '../api';
 
 class Topics extends Component {
   state = {
@@ -24,8 +24,7 @@ class Topics extends Component {
     this.getAllTopicData();
   }
   getAllTopicData = () => {
-    const url = `https://holly-nc-news.herokuapp.com/api/topics`;
-    axios.get(url).then(res => {
+    getTopics().then(res => {
       this.setState({ topics: res.data.topics });
     });
   };

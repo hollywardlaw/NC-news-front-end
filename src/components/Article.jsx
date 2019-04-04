@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { getSingleArticle, getComments } from '../api.js';
 
 class Article extends Component {
   state = {
@@ -33,22 +33,15 @@ class Article extends Component {
     );
   }
   componentDidMount() {
-    this.getSingleArticleData();
+    this.getArticleData();
   }
-  getSingleArticleData = () => {
-    const url = `https://holly-nc-news.herokuapp.com/api/articles/${
-      this.props.article_id
-    }`;
-
-    axios.get(url).then(res => {
+  getArticleData = () => {
+    getSingleArticle(this.props.article_id).then(res => {
       this.setState({ article: res.data.articles[0] });
     });
   };
   getCommentData = () => {
-    const url = `https://holly-nc-news.herokuapp.com/api/articles/${
-      this.props.article_id
-    }/comments`;
-    axios.get(url).then(res => {
+    getComments(this.props.article_id).then(res => {
       this.setState({ comments: res.data });
     });
   };
