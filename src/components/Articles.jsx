@@ -15,6 +15,7 @@ class Articles extends Component {
         <select onChange={this.handleChange} name="sort">
           <option value="created_at">Date</option>
           <option value="comment_count">Comments</option>
+          <option value="votes">Votes</option>
         </select>
         {this.state.articles.map(article => {
           return (
