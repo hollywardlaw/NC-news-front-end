@@ -11,7 +11,6 @@ class App extends Component {
     user: null
   };
   render() {
-    console.log(this.state.user);
     const { user } = this.state;
     return (
       <div className="App">

@@ -21,3 +21,7 @@ export const getArticles = (topic, sort_by) => {
     }
   });
 };
+
+export const getUsers = () => {
+  return axios.get(`${url}/users`);
+};

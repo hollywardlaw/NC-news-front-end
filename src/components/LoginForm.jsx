@@ -1,14 +1,29 @@
 import React, { Component } from 'react';
+import { getUsers } from '../api.js';
 
 class LoginForm extends Component {
-  state = { username: '' };
+  state = {
+    username: '',
+    allUsers: []
+  };
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <label>Enter your username:</label>
         <input onChange={this.handleChange} />
       </form>
     );
   }
+
+  componentDidMount() {
+    this.getUserData();
+  }
+  getUserData = () => {
+    getUsers().then(res => {
+      this.setState({ allUsers: res.data.users });
+    });
+  };
+
   handleChange = e => {
     this.setState({ username: e.target.value });
   };
@@ -17,7 +32,15 @@ class LoginForm extends Component {
     e.preventDefault();
     const { username } = this.state;
     const { setUser } = this.props;
-    setUser(username);
+    let validUsernames = [...this.state.allUsers].reduce((acc, value) => {
+      acc.push(value.username);
+      return acc;
+    }, []);
+    if (validUsernames.includes(username)) {
+      setUser(username);
+    } else {
+      alert('Please enter a valid username!');
+    }
   };
 }
 export default LoginForm;
