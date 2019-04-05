@@ -13,7 +13,7 @@ class ArticleForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h2>Post new article!</h2>
+        <h3>Post new article!</h3>
         <label>Title</label>
         <input
           onChange={event => this.handleChange('title', event.target.value)}

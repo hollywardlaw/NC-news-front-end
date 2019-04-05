@@ -35,3 +35,11 @@ export const postTopic = async topicToPost => {
   const { data } = await axios.post(`${url}/topics`, topicToPost);
   return data.topic;
 };
+
+export const postComment = async (commentToPost, articleID) => {
+  const { data } = await axios.post(
+    `${url}/articles/${articleID}/comments`,
+    commentToPost
+  );
+  return data.comment;
+};

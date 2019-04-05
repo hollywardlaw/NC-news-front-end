@@ -6,6 +6,7 @@ import Article from './components/Article';
 import Articles from './components/Articles';
 import Topics from './components/Topics';
 import ArticleForm from './components/ArticleForm';
+import CommentForm from './components/CommentForm';
 
 class App extends Component {
   state = {
@@ -22,7 +23,8 @@ class App extends Component {
           <Articles path="/" />
           <Articles path="articles" />
           <Articles path="articles/topics/:slug" />
-          <Article path="articles/:article_id" />
+          <Article path="articles/:article_id" user={user} />
+          <CommentForm path="articles/:article_id" user={user} />
         </Router>
       </div>
     );

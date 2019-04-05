@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getSingleArticle, getComments } from '../api.js';
+import CommentForm from './CommentForm.jsx';
 
 class Article extends Component {
   state = {
@@ -29,6 +30,10 @@ class Article extends Component {
               </div>
             );
           })}
+        <CommentForm
+          user={this.props.user}
+          article_id={this.state.article.article_id}
+        />
       </div>
     );
   }
