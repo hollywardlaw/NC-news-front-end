@@ -5,6 +5,7 @@ import { Router } from '@reach/router';
 import Article from './components/Article';
 import Articles from './components/Articles';
 import Topics from './components/Topics';
+import ArticleForm from './components/ArticleForm';
 
 class App extends Component {
   state = {
@@ -16,6 +17,7 @@ class App extends Component {
       <div className="App">
         <Header user={user} setUser={this.setUser} logOut={this.logOut} />
         <Topics />
+        <ArticleForm />
         <Router>
           <Articles path="/" />
           <Articles path="articles" />
