@@ -16,10 +16,12 @@ class ArticleForm extends Component {
         <h3>Post new article!</h3>
         <label>Title</label>
         <input
+          required
           onChange={event => this.handleChange('title', event.target.value)}
         />
         <label>Body</label>
         <textarea
+          required
           onChange={event => this.handleChange('body', event.target.value)}
         />
         <label>Topic</label>

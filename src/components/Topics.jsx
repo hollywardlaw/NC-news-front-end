@@ -32,7 +32,7 @@ class Topics extends Component {
             }
           />
 
-          <button type="submit">Sumbit topic</button>
+          <button type="submit">Submit topic</button>
         </form>
       </nav>
     );

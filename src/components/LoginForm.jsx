@@ -10,7 +10,7 @@ class LoginForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>Enter your username:</label>
-        <input onChange={this.handleChange} />
+        <input required onChange={this.handleChange} />
       </form>
     );
   }

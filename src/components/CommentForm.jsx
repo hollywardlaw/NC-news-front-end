@@ -11,6 +11,7 @@ class CommentForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <h3>Post new comment</h3>
         <textarea
+          required
           onChange={event => this.handleChange('body', event.target.value)}
         />
         <button type="submit">post comment</button>
