@@ -25,3 +25,13 @@ export const getArticles = (topic, sort_by) => {
 export const getUsers = () => {
   return axios.get(`${url}/users`);
 };
+
+export const postArticle = async articleToPost => {
+  const { data } = await axios.post(`${url}/articles/`, articleToPost);
+  return data.article;
+};
+
+export const postTopic = async topicToPost => {
+  const { data } = await axios.post(`${url}/topics`, topicToPost);
+  return data.topic;
+};

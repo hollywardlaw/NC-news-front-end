@@ -17,7 +17,7 @@ class App extends Component {
       <div className="App">
         <Header user={user} setUser={this.setUser} logOut={this.logOut} />
         <Topics />
-        <ArticleForm />
+        <ArticleForm user={user} />
         <Router>
           <Articles path="/" />
           <Articles path="articles" />
