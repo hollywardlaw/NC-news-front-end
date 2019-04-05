@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { postArticle } from '../api';
+import { postArticle, getTopics } from '../api';
 import { navigate } from '@reach/router';
 
 class ArticleForm extends Component {
@@ -7,7 +7,8 @@ class ArticleForm extends Component {
     title: '',
     body: '',
     topic: '',
-    author: ''
+    author: '',
+    topics: []
   };
   render() {
     return (
@@ -22,13 +23,29 @@ class ArticleForm extends Component {
           onChange={event => this.handleChange('body', event.target.value)}
         />
         <label>Topic</label>
-        <input
+        <select
           onChange={event => this.handleChange('topic', event.target.value)}
-        />
+        >
+          {this.state.topics.map(topic => {
+            return (
+              <option value={topic.slug} key={topic.slug}>
+                {topic.slug}
+              </option>
+            );
+          })}
+        </select>
         <button type="submit">Sumbit article</button>
       </form>
     );
   }
+  componentDidMount() {
+    this.getAllTopicData();
+  }
+  getAllTopicData = () => {
+    getTopics().then(res => {
+      this.setState({ topics: res.data.topics });
+    });
+  };
   componentDidUpdate(_, prevState) {
     if (this.props.user !== prevState.author) {
       this.setState({ author: this.props.user });
@@ -42,7 +59,8 @@ class ArticleForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     if (this.props.user) {
-      postArticle(this.state).then(res => {
+      const { title, body, author, topic } = this.state;
+      postArticle({ title, body, author, topic }).then(res => {
         navigate(`/articles/${res.article_id}`);
       });
     } else {
