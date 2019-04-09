@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { getSingleArticle, getComments } from '../api.js';
+import { getSingleArticle, getComments, deleteArticle } from '../api.js';
 import CommentForm from './CommentForm.jsx';
+import { navigate } from '@reach/router';
 
 class Article extends Component {
   state = {
@@ -34,6 +35,9 @@ class Article extends Component {
           user={this.props.user}
           article_id={this.state.article.article_id}
         />
+        {this.props.user && (
+          <button onClick={this.deleteClicked}>Delete article</button>
+        )}
       </div>
     );
   }
@@ -49,6 +53,15 @@ class Article extends Component {
     getComments(this.props.article_id).then(res => {
       this.setState({ comments: res.data });
     });
+  };
+  deleteClicked = () => {
+    if (this.props.user === this.state.article.author) {
+      deleteArticle(this.state.article.article_id).then(res => {
+        navigate(`/articles/`);
+      });
+    } else {
+      alert('You can only delete your own articles!');
+    }
   };
 }
 export default Article;

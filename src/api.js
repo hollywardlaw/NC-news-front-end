@@ -43,3 +43,7 @@ export const postComment = async (commentToPost, articleID) => {
   );
   return data.comment;
 };
+
+export const deleteArticle = async articleID => {
+  await axios.delete(`${url}/articles/${articleID}`);
+};
