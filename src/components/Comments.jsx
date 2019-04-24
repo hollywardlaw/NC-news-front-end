@@ -49,23 +49,25 @@ class Comments extends Component {
     });
   };
   handleVoteClick = (amount, comment_id) => {
-    this.setState({
-      voteLoading: true,
-      votingError: false
-    });
-    voteOnComment(this.props.article_id, comment_id, amount)
-      .then(() =>
-        this.setState(prevState => ({
-          voteChange: prevState.voteChange + amount,
-          voteLoading: false
-        }))
-      )
-      .catch(() => {
-        this.setState({
-          voteLoading: false,
-          votingError: true
-        });
+    if (this.props.user !== null) {
+      this.setState({
+        voteLoading: true,
+        votingError: false
       });
+      voteOnComment(this.props.article_id, comment_id, amount)
+        .then(() =>
+          this.setState(prevState => ({
+            voteChange: prevState.voteChange + amount,
+            voteLoading: false
+          }))
+        )
+        .catch(() => {
+          this.setState({
+            voteLoading: false,
+            votingError: true
+          });
+        });
+    }
   };
 }
 export default Comments;

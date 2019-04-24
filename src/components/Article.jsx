@@ -37,7 +37,11 @@ class Article extends Component {
           Comments:
           {this.state.article.comment_count}
         </p>
-        <Comments article_id={this.state.article.article_id} />
+        <Comments
+          article_id={this.state.article.article_id}
+          user={this.props.user}
+          v
+        />
         <CommentForm
           user={this.props.user}
           article_id={this.state.article.article_id}
@@ -66,23 +70,25 @@ class Article extends Component {
     }
   };
   handleVoteClick = amount => {
-    this.setState({
-      voteLoading: true,
-      votingError: false
-    });
-    voteOnArticle(this.state.article.article_id, amount)
-      .then(() =>
-        this.setState(prevState => ({
-          voteChange: prevState.voteChange + amount,
-          voteLoading: false
-        }))
-      )
-      .catch(() => {
-        this.setState({
-          voteLoading: false,
-          votingError: true
-        });
+    if (this.props.user !== null) {
+      this.setState({
+        voteLoading: true,
+        votingError: false
       });
+      voteOnArticle(this.state.article.article_id, amount)
+        .then(() =>
+          this.setState(prevState => ({
+            voteChange: prevState.voteChange + amount,
+            voteLoading: false
+          }))
+        )
+        .catch(() => {
+          this.setState({
+            voteLoading: false,
+            votingError: true
+          });
+        });
+    }
   };
 }
 export default Article;
