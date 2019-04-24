@@ -28,7 +28,7 @@ class Comments extends Component {
                 >
                   Vote up!
                 </button>
-                <p>Votes {comment.votes}</p>
+                <p>Votes {comment.votes + this.state.voteChange}</p>
                 <button
                   onClick={() => this.handleVoteClick(-1, comment.comment_id)}
                   disabled={

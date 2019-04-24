@@ -59,7 +59,7 @@ export const voteOnComment = async (article_id, comment_id, amount) => {
   const { data } = await axios.patch(
     `${url}/articles/${article_id}/comments/${comment_id}`,
     {
-      votes: amount
+      inc_votes: amount
     }
   );
   return data;
