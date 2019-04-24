@@ -49,9 +49,18 @@ export const deleteArticle = async articleID => {
 };
 
 export const voteOnArticle = async (articleID, amount) => {
-  console.log(articleID);
   const { data } = await axios.patch(`${url}/articles/${articleID}`, {
     inc_votes: amount
   });
+  return data;
+};
+
+export const voteOnComment = async (article_id, comment_id, amount) => {
+  const { data } = await axios.patch(
+    `${url}/articles/${article_id}/comments/${comment_id}`,
+    {
+      votes: amount
+    }
+  );
   return data;
 };

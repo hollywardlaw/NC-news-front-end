@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
-import {
-  getSingleArticle,
-  getComments,
-  deleteArticle,
-  voteOnArticle
-} from '../api.js';
+import { getSingleArticle, deleteArticle, voteOnArticle } from '../api.js';
 import CommentForm from './CommentForm.jsx';
 import { navigate } from '@reach/router';
 import '../App.css';
+import Comments from './Comments.jsx';
 
 class Article extends Component {
   state = {
     article: {},
-    comments: [],
     voteChange: 0,
     voteLoading: false,
     votingError: false
@@ -36,23 +31,13 @@ class Article extends Component {
           disabled={this.state.voteChange === -1 || this.state.voteLoading}
         >
           Vote down!
-        </button>{' '}
-        <br />
-        <button onClick={this.getCommentData}>
-          Show Comments
-          {this.state.article.comment_count}
         </button>
-        {this.state.comments.length !== 0 &&
-          this.state.comments.map(comment => {
-            return (
-              <div key={comment.comment_id}>
-                <p>Date posted: {comment.created_at.slice(0, 10)}</p>
-                <p>"{comment.body}"</p>
-                <p>by {comment.author}</p>
-                <p>Votes {comment.votes}</p>
-              </div>
-            );
-          })}
+        {this.state.voteLoading && <p>Voting...</p>}
+        <p>
+          Comments:
+          {this.state.article.comment_count}
+        </p>
+        <Comments article_id={this.state.article.article_id} />
         <CommentForm
           user={this.props.user}
           article_id={this.state.article.article_id}
@@ -69,11 +54,6 @@ class Article extends Component {
   getArticleData = () => {
     getSingleArticle(this.props.article_id).then(res => {
       this.setState({ article: res.data.articles[0] });
-    });
-  };
-  getCommentData = () => {
-    getComments(this.props.article_id).then(res => {
-      this.setState({ comments: res.data });
     });
   };
   deleteClicked = () => {
