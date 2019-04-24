@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { getComments, voteOnComment } from '../api.js';
+import { getComments, voteOnComment, deleteComment } from '../api.js';
 import '../App.css';
+import { navigate } from '@reach/router';
 
 class Comments extends Component {
   state = {
@@ -37,6 +38,15 @@ class Comments extends Component {
                 >
                   Vote down!
                 </button>
+                {this.props.user && (
+                  <button
+                    onClick={() =>
+                      this.deleteClicked(comment.comment_id, comment.author)
+                    }
+                  >
+                    Delete comment
+                  </button>
+                )}
               </div>
             );
           })}
@@ -67,6 +77,15 @@ class Comments extends Component {
             votingError: true
           });
         });
+    }
+  };
+  deleteClicked = (comment_id, author) => {
+    if (this.props.user === author) {
+      deleteComment(this.props.article_id, comment_id).then(res => {
+        navigate(`/articles/${this.props.article_id}`);
+      });
+    } else {
+      alert('You can only delete your own comments!');
     }
   };
 }

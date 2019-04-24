@@ -64,3 +64,7 @@ export const voteOnComment = async (article_id, comment_id, amount) => {
   );
   return data;
 };
+
+export const deleteComment = async (articleID, comment_id) => {
+  await axios.delete(`${url}/articles/${articleID}/comments/${comment_id}`);
+};
