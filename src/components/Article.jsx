@@ -10,7 +10,9 @@ class Article extends Component {
     article: {},
     voteChange: 0,
     voteLoading: false,
-    votingError: false
+    votingError: false,
+    triedToDeleteArticle: false,
+    triedToVote: false
   };
   render() {
     return (
@@ -33,6 +35,7 @@ class Article extends Component {
           Vote down!
         </button>
         {this.state.voteLoading && <p>Voting...</p>}
+        {this.state.triedToVote && <p>You must be logged in to vote!</p>}
         <p>
           Comments:
           {this.state.article.comment_count}
@@ -48,6 +51,9 @@ class Article extends Component {
         />
         {this.props.user && (
           <button onClick={this.deleteClicked}>Delete article</button>
+        )}
+        {this.state.triedToDeleteArticle && (
+          <p>You can only delete your own articles!</p>
         )}
       </div>
     );
@@ -66,7 +72,7 @@ class Article extends Component {
         navigate(`/articles/`);
       });
     } else {
-      alert('You can only delete your own articles!');
+      this.setState({ triedToDeleteArticle: true });
     }
   };
   handleVoteClick = amount => {
@@ -88,6 +94,8 @@ class Article extends Component {
             votingError: true
           });
         });
+    } else {
+      this.setState({ triedToVote: true });
     }
   };
 }

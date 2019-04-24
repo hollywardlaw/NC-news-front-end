@@ -8,7 +8,9 @@ class Comments extends Component {
     comments: [],
     voteChange: 0,
     voteLoading: false,
-    votingError: false
+    votingError: false,
+    triedToDelete: false,
+    triedToVote: false
   };
   render() {
     return (
@@ -38,6 +40,9 @@ class Comments extends Component {
                 >
                   Vote down!
                 </button>
+                {this.state.triedToVote && (
+                  <p>You must be logged in to vote!</p>
+                )}
                 {this.props.user && (
                   <button
                     onClick={() =>
@@ -46,6 +51,9 @@ class Comments extends Component {
                   >
                     Delete comment
                   </button>
+                )}
+                {this.state.triedToDelete && (
+                  <p>You can only delete your own comments!</p>
                 )}
               </div>
             );
@@ -77,6 +85,8 @@ class Comments extends Component {
             votingError: true
           });
         });
+    } else {
+      this.setState({ triedToVote: true });
     }
   };
   deleteClicked = (comment_id, author) => {
@@ -85,7 +95,7 @@ class Comments extends Component {
         navigate(`/articles/${this.props.article_id}`);
       });
     } else {
-      alert('You can only delete your own comments!');
+      this.setState({ triedToDelete: true });
     }
   };
 }
