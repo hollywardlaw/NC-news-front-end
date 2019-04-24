@@ -5,7 +5,9 @@ import '../App.css';
 class CommentForm extends Component {
   state = {
     body: '',
-    author: ''
+    author: '',
+    triedToPost: false,
+    posted: false
   };
   render() {
     return (
@@ -15,7 +17,10 @@ class CommentForm extends Component {
           required
           onChange={event => this.handleChange('body', event.target.value)}
         />
+
         <button type="submit">post comment</button>
+        {this.state.triedToPost && <p>Please sign in to post a comment!</p>}
+        {this.state.posted && <p>Thank you! Your comment has been posted</p>}
       </form>
     );
   }
@@ -32,11 +37,15 @@ class CommentForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     if (this.props.user) {
-      postComment(this.state, this.props.article_id).then(res => {
-        alert('Thank you! Your comment has been posted');
+      const commentToPost = {
+        body: this.state.body,
+        author: this.state.author
+      };
+      postComment(commentToPost, this.props.article_id).then(res => {
+        this.setState({ posted: true, triedToPost: false });
       });
     } else {
-      alert('Please sign in to post a comment!');
+      this.setState({ triedToPost: true });
     }
 
     event.target.reset();

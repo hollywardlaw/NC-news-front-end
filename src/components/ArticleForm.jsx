@@ -9,7 +9,8 @@ class ArticleForm extends Component {
     body: '',
     topic: '',
     author: '',
-    topics: []
+    topics: [],
+    triedToPost: false
   };
   render() {
     return (
@@ -38,6 +39,7 @@ class ArticleForm extends Component {
           })}
         </select>
         <button type="submit">Sumbit article</button>
+        {this.state.triedToPost && <p>Please sign in to post an article!</p>}
       </form>
     );
   }
@@ -67,7 +69,7 @@ class ArticleForm extends Component {
         navigate(`/articles/${res.article_id}`);
       });
     } else {
-      alert('Please sign in to post an article!');
+      this.setState({ triedToPost: true });
     }
 
     event.target.reset();

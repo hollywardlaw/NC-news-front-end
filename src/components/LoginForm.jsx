@@ -5,13 +5,15 @@ import '../App.css';
 class LoginForm extends Component {
   state = {
     username: '',
-    allUsers: []
+    allUsers: [],
+    triedToLogIn: false
   };
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>Enter your username:</label>
         <input required onChange={this.handleChange} />
+        {this.state.triedToLogIn && <p>Please enter a valid username!</p>}
       </form>
     );
   }
@@ -40,7 +42,7 @@ class LoginForm extends Component {
     if (validUsernames.includes(username)) {
       setUser(username);
     } else {
-      alert('Please enter a valid username!');
+      this.setState({ triedToLogIn: true });
     }
   };
 }
