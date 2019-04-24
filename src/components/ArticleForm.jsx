@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { postArticle, getTopics } from '../api';
 import { navigate } from '@reach/router';
+import '../App.css';
 
 class ArticleForm extends Component {
   state = {
@@ -12,7 +13,7 @@ class ArticleForm extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="article-form" onSubmit={this.handleSubmit}>
         <h3>Post new article!</h3>
         <label>Title</label>
         <input

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import { getArticles } from '../api.js';
+import '../App.css';
 
 class Articles extends Component {
   state = {
@@ -9,7 +10,7 @@ class Articles extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="articles">
         <h2>Articles!</h2>
         <select onChange={this.handleChange} name="sort">
           <option value="created_at">Date</option>
@@ -18,7 +19,7 @@ class Articles extends Component {
         </select>
         {this.state.articles.map(article => {
           return (
-            <article key={article.article_id}>
+            <article className="article" key={article.article_id}>
               <h3>{article.title}</h3>
               <h4>by {article.author}</h4>
               <p>Date posted: {article.created_at.slice(0, 10)}</p>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { postComment } from '../api';
+import '../App.css';
 
 class CommentForm extends Component {
   state = {
@@ -8,7 +9,7 @@ class CommentForm extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="commentForm" onSubmit={this.handleSubmit}>
         <h3>Post new comment</h3>
         <textarea
           required

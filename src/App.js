@@ -19,7 +19,7 @@ class App extends Component {
         <Header user={user} setUser={this.setUser} logOut={this.logOut} />
         <Topics />
         <ArticleForm user={user} />
-        <Router>
+        <Router className="centre">
           <Articles path="/" />
           <Articles path="articles" />
           <Articles path="articles/topics/:slug" />

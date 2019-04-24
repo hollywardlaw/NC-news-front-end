@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import { getTopics, postTopic } from '../api';
+import '../App.css';
 
 class Topics extends Component {
   state = {
@@ -10,7 +11,7 @@ class Topics extends Component {
   };
   render() {
     return (
-      <nav>
+      <nav className="nav">
         <Link to={`/articles`}>All topics </Link>
         {this.state.topics.map(topic => {
           return (
