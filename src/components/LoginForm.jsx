@@ -18,16 +18,8 @@ class LoginForm extends Component {
     );
   }
 
-  componentDidMount() {
-    this.getUserData();
-  }
-  getUserData = () => {
-    getUsers().then(res => {
-      this.setState({ allUsers: res.data.users });
-    });
-  };
-
   handleChange = e => {
+    this.getUserData();
     this.setState({ username: e.target.value });
   };
 
@@ -44,6 +36,11 @@ class LoginForm extends Component {
     } else {
       this.setState({ triedToLogIn: true });
     }
+  };
+  getUserData = () => {
+    getUsers().then(res => {
+      this.setState({ allUsers: res.data.users });
+    });
   };
 }
 export default LoginForm;

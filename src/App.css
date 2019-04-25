@@ -9,7 +9,7 @@ body {
   grid-template-columns: 20% 60% 20%;
   grid-template-rows: 10% 10% 70% 10%;
   grid-template-areas:
-    'header header header'
+    'header header login'
     'left-panel centre right-panel'
     'left-panel centre right-panel'
     'left-panel footer right-panel';
@@ -57,4 +57,8 @@ body {
 
 .article {
   border: 2px solid black;
+}
+
+.login {
+  grid-area: login;
 }
