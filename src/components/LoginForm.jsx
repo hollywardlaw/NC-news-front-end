@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getUsers } from '../api.js';
 import '../App.css';
+import { navigate } from '@reach/router';
 
 class LoginForm extends Component {
   state = {
@@ -38,9 +39,13 @@ class LoginForm extends Component {
     }
   };
   getUserData = () => {
-    getUsers().then(res => {
-      this.setState({ allUsers: res.data.users });
-    });
+    getUsers()
+      .then(res => {
+        this.setState({ allUsers: res.data.users });
+      })
+      .catch(err => {
+        navigate('/error', { replace: true });
+      });
   };
 }
 export default LoginForm;

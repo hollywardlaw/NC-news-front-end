@@ -47,9 +47,13 @@ class ArticleForm extends Component {
     this.getAllTopicData();
   }
   getAllTopicData = () => {
-    getTopics().then(res => {
-      this.setState({ topics: res.data.topics });
-    });
+    getTopics()
+      .then(res => {
+        this.setState({ topics: res.data.topics });
+      })
+      .catch(err => {
+        navigate('/error', { replace: true });
+      });
   };
   componentDidUpdate(_, prevState) {
     if (this.props.user !== prevState.author) {
@@ -65,9 +69,13 @@ class ArticleForm extends Component {
     event.preventDefault();
     if (this.props.user) {
       const { title, body, author, topic } = this.state;
-      postArticle({ title, body, author, topic }).then(res => {
-        navigate(`/articles/${res.article_id}`);
-      });
+      postArticle({ title, body, author, topic })
+        .then(res => {
+          navigate(`/articles/${res.article_id}`);
+        })
+        .catch(err => {
+          navigate('/error', { replace: true });
+        });
     } else {
       this.setState({ triedToPost: true });
     }

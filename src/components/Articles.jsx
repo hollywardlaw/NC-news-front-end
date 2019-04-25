@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import { getArticles } from '../api.js';
 import '../App.css';
+import { navigate } from '@reach/router';
 
 class Articles extends Component {
   state = {
@@ -49,9 +50,13 @@ class Articles extends Component {
     }
   }
   getArticlesData = () => {
-    getArticles(this.props.slug, this.state.sort).then(res => {
-      this.setState({ articles: res.data.articles });
-    });
+    getArticles(this.props.slug, this.state.sort)
+      .then(res => {
+        this.setState({ articles: res.data.articles });
+      })
+      .catch(err => {
+        navigate('/error', { replace: true });
+      });
   };
   handleChange = event => {
     this.setState({ sort: event.target.value });

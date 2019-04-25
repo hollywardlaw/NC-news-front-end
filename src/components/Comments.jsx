@@ -65,9 +65,13 @@ class Comments extends Component {
     );
   }
   getCommentData = () => {
-    getComments(this.props.article_id).then(res => {
-      this.setState({ comments: res.data });
-    });
+    getComments(this.props.article_id)
+      .then(res => {
+        this.setState({ comments: res.data });
+      })
+      .catch(err => {
+        navigate('/error', { replace: true });
+      });
   };
   handleVoteClick = (amount, comment_id) => {
     if (this.props.user !== null) {
@@ -94,9 +98,13 @@ class Comments extends Component {
   };
   deleteClicked = (comment_id, author) => {
     if (this.props.user === author) {
-      deleteComment(this.props.article_id, comment_id).then(res => {
-        navigate(`/articles/${this.props.article_id}`);
-      });
+      deleteComment(this.props.article_id, comment_id)
+        .then(res => {
+          navigate(`/articles/${this.props.article_id}`);
+        })
+        .catch(err => {
+          navigate('/error', { replace: true });
+        });
     } else {
       this.setState({ triedToDelete: true });
     }

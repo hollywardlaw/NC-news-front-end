@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import { getTopics, postTopic } from '../api';
 import '../App.css';
+import { navigate } from '@reach/router';
 
 class Topics extends Component {
   state = {
@@ -42,9 +43,13 @@ class Topics extends Component {
     this.getAllTopicData();
   }
   getAllTopicData = () => {
-    getTopics().then(res => {
-      this.setState({ topics: res.data.topics });
-    });
+    getTopics()
+      .then(res => {
+        this.setState({ topics: res.data.topics });
+      })
+      .catch(err => {
+        navigate('/error', { replace: true });
+      });
   };
   handleChange = (key, value) => {
     this.setState({

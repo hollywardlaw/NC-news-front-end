@@ -65,15 +65,27 @@ class Article extends Component {
     this.getArticleData();
   }
   getArticleData = () => {
-    getSingleArticle(this.props.article_id).then(res => {
-      this.setState({ article: res.data.articles[0] });
-    });
+    getSingleArticle(this.props.article_id)
+      .then(res => {
+        if (res.data.articles.length !== 0) {
+          this.setState({ article: res.data.articles[0] });
+        } else {
+          navigate('/error', { replace: true });
+        }
+      })
+      .catch(err => {
+        navigate('/error', { replace: true });
+      });
   };
   deleteClicked = () => {
     if (this.props.user === this.state.article.author) {
-      deleteArticle(this.state.article.article_id).then(res => {
-        navigate(`/articles/`);
-      });
+      deleteArticle(this.state.article.article_id)
+        .then(res => {
+          navigate(`/articles/`);
+        })
+        .catch(err => {
+          navigate('/error', { replace: true });
+        });
     } else {
       this.setState({ triedToDeleteArticle: true });
     }
