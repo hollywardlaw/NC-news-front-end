@@ -1,10 +1,14 @@
 import React from 'react';
+import ncNewsImage from '../ncNewsMilo.jpg';
 import '../App.css';
+import { Link } from '@reach/router';
 
 const Header = props => {
   return (
     <header className="header">
-      <h1>NC News</h1>
+      <Link to="/">
+        <img className="nc-news-image" src={ncNewsImage} alt="NC News" />
+      </Link>
     </header>
   );
 };

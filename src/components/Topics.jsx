@@ -12,16 +12,24 @@ class Topics extends Component {
   };
   render() {
     return (
-      <nav className="nav">
-        <Link to={`/articles`}>All topics </Link>
-        {this.state.topics.map(topic => {
-          return (
-            <Link key={topic.slug} to={`/articles/topics/${topic.slug}`}>
-              {topic.slug}
-            </Link>
-          );
-        })}
-        <form onSubmit={this.handleSubmit}>
+      <div>
+        <ul className="topics">
+          {this.state.topics.map(topic => {
+            return (
+              <div className="topic-list-item" key={topic.slug}>
+                <Link
+                  className="topic-link"
+                  key={topic.slug}
+                  to={`/articles/topics/${topic.slug}`}
+                >
+                  {topic.slug}
+                </Link>
+                <p>"{topic.description}..."</p>
+              </div>
+            );
+          })}
+        </ul>
+        <form className="topic-form" onSubmit={this.handleSubmit}>
           <h2>Post new topic!</h2>
           <label>Name</label>
           <input
@@ -36,7 +44,7 @@ class Topics extends Component {
 
           <button type="submit">Submit topic</button>
         </form>
-      </nav>
+      </div>
     );
   }
   componentDidMount() {

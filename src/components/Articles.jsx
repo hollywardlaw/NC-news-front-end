@@ -3,6 +3,7 @@ import { Link } from '@reach/router';
 import { getArticles } from '../api.js';
 import '../App.css';
 import { navigate } from '@reach/router';
+import ArticleForm from '../components/ArticleForm';
 
 class Articles extends Component {
   state = {
@@ -11,31 +12,34 @@ class Articles extends Component {
   };
   render() {
     return (
-      <div className="articles">
-        <h2>Articles!</h2>
+      <>
+        <label>Filter:</label>
         <select onChange={this.handleChange} name="sort">
           <option value="created_at">Date</option>
           <option value="comment_count">Comments</option>
           <option value="votes">Votes</option>
         </select>
-        {this.state.articles.map(article => {
-          return (
-            <article className="article" key={article.article_id}>
-              <h3>{article.title}</h3>
-              <h4>by {article.author}</h4>
-              <p>Date posted: {article.created_at.slice(0, 10)}</p>
-              <p>Topic: {article.topic}</p>
-              <p>{article.body.slice(0, 50)}...</p>
-              <Link to={`/articles/${article.article_id}`}>
-                Read full article
-              </Link>
-              <p>
-                Votes {article.votes} | Comments {article.comment_count}
-              </p>
-            </article>
-          );
-        })}
-      </div>
+        <div className="articles">
+          {this.state.articles.map(article => {
+            return (
+              <article className="article" key={article.article_id}>
+                <h3>{article.title}</h3>
+                <h4>by {article.author}</h4>
+                <p>Date posted: {article.created_at.slice(0, 10)}</p>
+                <p>Topic: {article.topic}</p>
+                <p>{article.body.slice(0, 50)}...</p>
+                <Link to={`/articles/${article.article_id}`}>
+                  Read full article
+                </Link>
+                <p>
+                  Votes {article.votes} | Comments {article.comment_count}
+                </p>
+              </article>
+            );
+          })}
+        </div>
+        <ArticleForm user={this.props.user} />
+      </>
     );
   }
   componentDidMount() {

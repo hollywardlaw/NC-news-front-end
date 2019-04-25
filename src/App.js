@@ -5,10 +5,11 @@ import { Router } from '@reach/router';
 import Article from './components/Article';
 import Articles from './components/Articles';
 import Topics from './components/Topics';
-import ArticleForm from './components/ArticleForm';
+// import ArticleForm from './components/ArticleForm';
 import CommentForm from './components/CommentForm';
 import Login from './components/Login';
 import Error from './components/Error';
+import Nav from './components/Nav';
 
 class App extends Component {
   state = {
@@ -20,9 +21,9 @@ class App extends Component {
       <div className="App">
         <Header />
         <Login user={user} setUser={this.setUser} logOut={this.logOut} />
-        <Topics />
-        <ArticleForm user={user} />
+        <Nav />
         <Router className="centre">
+          <Topics path="/topics" />
           <Articles path="/" />
           <Articles path="articles" />
           <Articles path="articles/topics/:slug" />
