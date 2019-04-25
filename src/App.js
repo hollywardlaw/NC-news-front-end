@@ -8,6 +8,7 @@ import Topics from './components/Topics';
 import ArticleForm from './components/ArticleForm';
 import CommentForm from './components/CommentForm';
 import Login from './components/Login';
+import Error from './components/Error';
 
 class App extends Component {
   state = {
@@ -27,6 +28,7 @@ class App extends Component {
           <Articles path="articles/topics/:slug" />
           <Article path="articles/:article_id" user={user} />
           <CommentForm path="articles/:article_id" user={user} />
+          <Error path="/error" default />
         </Router>
       </div>
     );

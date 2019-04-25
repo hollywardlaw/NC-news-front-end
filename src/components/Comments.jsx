@@ -15,7 +15,10 @@ class Comments extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.getCommentData}>Show Comments</button>
+        {this.props.comment_count > 0 && (
+          <button onClick={this.getCommentData}>Show Comments</button>
+        )}
+
         {this.state.comments.length !== 0 &&
           this.state.comments.map(comment => {
             return (

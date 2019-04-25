@@ -40,11 +40,14 @@ class Article extends Component {
           Comments:
           {this.state.article.comment_count}
         </p>
+
         <Comments
           author={this.state.article.author}
           article_id={this.state.article.article_id}
           user={this.props.user}
+          comment_count={this.state.article.comment_count}
         />
+
         <CommentForm
           user={this.props.user}
           article_id={this.state.article.article_id}
