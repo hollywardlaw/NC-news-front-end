@@ -15,6 +15,7 @@ class LoginForm extends Component {
         <label>Enter your username:</label>
         <input required onChange={this.handleChange} />
         {this.state.triedToLogIn && <p>Please enter a valid username!</p>}
+        <button>Log in</button>
       </form>
     );
   }

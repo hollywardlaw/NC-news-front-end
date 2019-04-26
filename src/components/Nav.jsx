@@ -14,6 +14,9 @@ const Nav = props => {
       <Link className="link" to={`/topics`}>
         TOPICS
       </Link>
+      <Link className="link" to={`/users`}>
+        USERS
+      </Link>
     </nav>
   );
 };

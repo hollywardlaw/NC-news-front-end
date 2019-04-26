@@ -39,6 +39,12 @@ export const getUsers = () => {
   });
 };
 
+export const getUser = username => {
+  return axios.get(`${url}/users/${username}`).catch(err => {
+    navigate('/error', { replace: true });
+  });
+};
+
 export const postArticle = async articleToPost => {
   const { data } = await axios
     .post(`${url}/articles/`, articleToPost)
@@ -98,4 +104,10 @@ export const deleteComment = async (articleID, comment_id) => {
     .catch(err => {
       navigate('/error', { replace: true });
     });
+};
+
+export const getUserArticles = author => {
+  return axios.get(`${url}/articles?author=${author}`).catch(err => {
+    navigate('/error', { replace: true });
+  });
 };

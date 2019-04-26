@@ -22,8 +22,8 @@ class Articles extends Component {
         <div className="articles">
           {this.state.articles.map(article => {
             return (
-              <article className="article" key={article.article_id}>
-                <h3>{article.title}</h3>
+              <article className="article-summary" key={article.article_id}>
+                <h2>{article.title}</h2>
                 <h4>by {article.author}</h4>
                 <p>Date posted: {article.created_at.slice(0, 10)}</p>
                 <p>Topic: {article.topic}</p>

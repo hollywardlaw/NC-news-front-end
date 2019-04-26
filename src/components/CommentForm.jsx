@@ -11,14 +11,17 @@ class CommentForm extends Component {
   };
   render() {
     return (
-      <form className="commentForm" onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
         <h3>Post new comment</h3>
+        <br />
         <textarea
           required
           onChange={event => this.handleChange('body', event.target.value)}
         />
+        <br />
 
         <button type="submit">post comment</button>
+        <br />
         {this.state.triedToPost && <p>Please sign in to post a comment!</p>}
         {this.state.posted && <p>Thank you! Your comment has been posted</p>}
       </form>

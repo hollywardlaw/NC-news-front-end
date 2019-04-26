@@ -14,19 +14,25 @@ class ArticleForm extends Component {
   };
   render() {
     return (
-      <form className="article-form" onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
         <h3>Post new article!</h3>
+        <br />
         <label>Title</label>
+        <br />
         <input
           required
           onChange={event => this.handleChange('title', event.target.value)}
         />
+        <br />
         <label>Body</label>
+        <br />
         <textarea
           required
           onChange={event => this.handleChange('body', event.target.value)}
         />
+        <br />
         <label>Topic</label>
+        <br />
         <select
           onChange={event => this.handleChange('topic', event.target.value)}
         >
@@ -38,6 +44,7 @@ class ArticleForm extends Component {
             );
           })}
         </select>
+        <br />
         <button type="submit">Sumbit article</button>
         {this.state.triedToPost && <p>Please sign in to post an article!</p>}
       </form>

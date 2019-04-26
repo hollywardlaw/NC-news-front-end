@@ -24,24 +24,29 @@ class Topics extends Component {
                 >
                   {topic.slug}
                 </Link>
+                <br />
                 <p>"{topic.description}..."</p>
               </div>
             );
           })}
         </ul>
-        <form className="topic-form" onSubmit={this.handleSubmit}>
-          <h2>Post new topic!</h2>
+        <form className="form" onSubmit={this.handleSubmit}>
+          <h3>Post new topic!</h3>
+          <br />
           <label>Name</label>
+          <br />
           <input
             onChange={event => this.handleChange('slug', event.target.value)}
           />
+          <br />
           <label>Description</label>
+          <br />
           <textarea
             onChange={event =>
               this.handleChange('description', event.target.value)
             }
           />
-
+          <br />
           <button type="submit">Submit topic</button>
         </form>
       </div>
