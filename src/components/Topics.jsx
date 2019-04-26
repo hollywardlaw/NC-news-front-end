@@ -73,7 +73,9 @@ class Topics extends Component {
     event.preventDefault();
     const { slug, description } = this.state;
     if (!this.state.topics.includes(slug)) {
-      postTopic({ slug, description });
+      postTopic({ slug, description }).then(() => {
+        navigate(`/articles/topics/${this.state.slug}`);
+      });
     }
 
     event.target.reset();

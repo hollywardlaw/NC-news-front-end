@@ -64,6 +64,7 @@ class Comments extends Component {
       </div>
     );
   }
+
   getCommentData = () => {
     getComments(this.props.article_id)
       .then(res => {

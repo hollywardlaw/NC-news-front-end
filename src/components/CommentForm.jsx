@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { postComment } from '../api';
 import '../App.css';
+import { navigate } from '@reach/router/lib/history';
 
 class CommentForm extends Component {
   state = {
@@ -44,9 +45,13 @@ class CommentForm extends Component {
         body: this.state.body,
         author: this.state.author
       };
-      postComment(commentToPost, this.props.article_id).then(res => {
-        this.setState({ posted: true, triedToPost: false });
-      });
+      postComment(commentToPost, this.props.article_id)
+        .then(() => {
+          navigate(`/articles/${this.props.article_id}`);
+        })
+        .then(res => {
+          this.setState({ posted: true, triedToPost: false });
+        });
     } else {
       this.setState({ triedToPost: true });
     }

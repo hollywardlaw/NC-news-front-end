@@ -27,7 +27,7 @@ class App extends Component {
           <Topics path="/topics" />
           <Articles path="/" />
           <Articles path="articles" />
-          <Articles path="articles/topics/:slug" />
+          <Articles path="articles/topics/:slug" user={user} />
           <Article path="articles/:article_id" user={user} />
           <CommentForm path="articles/:article_id" user={user} />
           <Users path="/users" />
