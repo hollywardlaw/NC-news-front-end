@@ -19,7 +19,7 @@ const Nav = props => {
       </Link>
       {props.user && (
         <Link className="link" to={`/me`}>
-          My Page
+          ME
         </Link>
       )}
     </nav>

@@ -20,6 +20,7 @@ class UserProfile extends Component {
             >
               <h3>My articles</h3>
             </Link>
+            <img src={this.state.user.avatar_url} alt="user avatar" />
           </div>
         )}
       </>

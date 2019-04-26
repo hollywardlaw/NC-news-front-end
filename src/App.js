@@ -26,9 +26,9 @@ class App extends Component {
         <Login user={user} setUser={this.setUser} logOut={this.logOut} />
         <Nav user={user} />
         <Router className="centre">
-          <Topics path="/topics" />
+          <Topics path="/topics" user={user} />
           <Home path="/" />
-          <Articles path="articles" />
+          <Articles path="articles" user={user} />
           <Articles path="articles/topics/:slug" user={user} />
           <Article path="articles/:article_id" user={user} />
           <CommentForm path="articles/:article_id" user={user} />

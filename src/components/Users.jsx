@@ -16,7 +16,7 @@ class Users extends Component {
               <Link className="topic-link" to={`/users/${user.username}`}>
                 <h3>{user.name}</h3>
               </Link>
-              Username: <h4>{user.username}</h4>
+              <h1>Username: {user.username}</h1>
             </div>
           );
         })}
