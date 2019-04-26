@@ -11,6 +11,8 @@ import Error from './components/Error';
 import Nav from './components/Nav';
 import Users from './components/Users';
 import User from './components/User';
+import Home from './components/Home';
+import UserProfile from './components/UserProfile';
 
 class App extends Component {
   state = {
@@ -22,16 +24,18 @@ class App extends Component {
       <div className="App">
         <Header />
         <Login user={user} setUser={this.setUser} logOut={this.logOut} />
-        <Nav />
+        <Nav user={user} />
         <Router className="centre">
           <Topics path="/topics" />
-          <Articles path="/" />
+          <Home path="/" />
           <Articles path="articles" />
           <Articles path="articles/topics/:slug" user={user} />
           <Article path="articles/:article_id" user={user} />
           <CommentForm path="articles/:article_id" user={user} />
           <Users path="/users" />
           <User path="/users/:username" />
+          {this.state.user && <UserProfile path="/me" user={user} />}
+
           <Error path="/error" default />
         </Router>
       </div>

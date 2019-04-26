@@ -28,7 +28,10 @@ class Articles extends Component {
                 <p>Date posted: {article.created_at.slice(0, 10)}</p>
                 <p>Topic: {article.topic}</p>
                 <p>{article.body.slice(0, 50)}...</p>
-                <Link to={`/articles/${article.article_id}`}>
+                <Link
+                  className="article-link"
+                  to={`/articles/${article.article_id}`}
+                >
                   Read full article
                 </Link>
                 <p>

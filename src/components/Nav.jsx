@@ -17,6 +17,11 @@ const Nav = props => {
       <Link className="link" to={`/users`}>
         USERS
       </Link>
+      {props.user && (
+        <Link className="link" to={`/me`}>
+          My Page
+        </Link>
+      )}
     </nav>
   );
 };
