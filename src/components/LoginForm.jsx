@@ -13,7 +13,7 @@ class LoginForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>Enter your username:</label>
-        <input required onChange={this.handleChange} />
+        <input placeholder="jessjelly" required onChange={this.handleChange} />
         {this.state.triedToLogIn && <p>Please enter a valid username!</p>}
         <button>Log in</button>
       </form>
