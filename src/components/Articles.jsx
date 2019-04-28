@@ -25,9 +25,11 @@ class Articles extends Component {
               <article className="article-summary" key={article.article_id}>
                 <h2>{article.title}</h2>
                 <h4>by {article.author}</h4>
-                <p>Date posted: {article.created_at.slice(0, 10)}</p>
+                <p className="date">
+                  Date posted: {article.created_at.slice(0, 10)}
+                </p>
                 <p>Topic: {article.topic}</p>
-                <p>{article.body.slice(0, 50)}...</p>
+                <p className="body-text">"{article.body.slice(0, 50)}..."</p>
                 <Link
                   className="article-link"
                   to={`/articles/${article.article_id}`}

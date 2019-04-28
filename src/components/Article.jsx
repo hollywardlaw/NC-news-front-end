@@ -20,7 +20,7 @@ class Article extends Component {
         <h2>{this.state.article && this.state.article.title}</h2>
         <h4>by {this.state.article.author}</h4>
         <p>Topic: {this.state.article.topic}</p>
-        <p>{this.state.article.body}</p>
+        <p className="article-body">{this.state.article.body}</p>
         <button
           onClick={() => this.handleVoteClick(1)}
           disabled={this.state.voteChange === 1 || this.state.voteLoading}

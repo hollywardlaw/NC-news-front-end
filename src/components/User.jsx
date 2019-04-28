@@ -11,7 +11,7 @@ class User extends Component {
   render() {
     return (
       <div>
-        {this.state.user.length !== 0 && <h2>{this.state.user[0].name}</h2>}
+        {this.state.user.length !== 0 && <h1>{this.state.user[0].name}</h1>}
         {this.state.articles.length !== 0 && (
           <>
             {this.state.articles.map(article => {
@@ -20,7 +20,7 @@ class User extends Component {
                   <h2>{article.title}</h2>
                   <h4>by {article.author}</h4>
                   <p>Topic: {article.topic}</p>
-                  <p>{article.body}</p>
+                  <p className="body-text">{article.body}</p>
                 </div>
               );
             })}

@@ -13,7 +13,6 @@ class ArticleForm extends Component {
     triedToPost: false
   };
   render() {
-    console.log(this.props.user);
     return (
       <form className="form" onSubmit={this.handleSubmit}>
         <h3>Post new article!</h3>

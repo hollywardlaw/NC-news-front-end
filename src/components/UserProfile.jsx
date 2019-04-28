@@ -15,11 +15,13 @@ class UserProfile extends Component {
             <h1>{this.state.user.name}</h1>
             <h2>Username: {this.state.user.username}</h2>
             <Link
-              className="topic-link"
+              className="article-link"
               to={`/users/${this.state.user.username}`}
             >
-              <h3>My articles</h3>
+              My articles
             </Link>
+            <br />
+            <br />
             <img src={this.state.user.avatar_url} alt="user avatar" />
           </div>
         )}

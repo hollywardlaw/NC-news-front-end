@@ -13,7 +13,7 @@ class Topics extends Component {
   render() {
     return (
       <div>
-        <ul className="topics">
+        <ul>
           {this.state.topics.map(topic => {
             return (
               <div className="topic-list-item" key={topic.slug}>
@@ -29,26 +29,27 @@ class Topics extends Component {
               </div>
             );
           })}
+
+          <form className="form" onSubmit={this.handleSubmit}>
+            <h3>Post new topic!</h3>
+            <br />
+            <label>Name</label>
+            <br />
+            <input
+              onChange={event => this.handleChange('slug', event.target.value)}
+            />
+            <br />
+            <label>Description</label>
+            <br />
+            <textarea
+              onChange={event =>
+                this.handleChange('description', event.target.value)
+              }
+            />
+            <br />
+            <button type="submit">Submit topic</button>
+          </form>
         </ul>
-        <form className="form" onSubmit={this.handleSubmit}>
-          <h3>Post new topic!</h3>
-          <br />
-          <label>Name</label>
-          <br />
-          <input
-            onChange={event => this.handleChange('slug', event.target.value)}
-          />
-          <br />
-          <label>Description</label>
-          <br />
-          <textarea
-            onChange={event =>
-              this.handleChange('description', event.target.value)
-            }
-          />
-          <br />
-          <button type="submit">Submit topic</button>
-        </form>
       </div>
     );
   }

@@ -22,10 +22,12 @@ class Comments extends Component {
         {this.state.comments.length !== 0 &&
           this.state.comments.map(comment => {
             return (
-              <div key={comment.comment_id}>
-                <p>Date posted: {comment.created_at.slice(0, 10)}</p>
-                <p>"{comment.body}"</p>
-                <p>by {comment.author}</p>
+              <div className="comment" key={comment.comment_id}>
+                <p className="date">
+                  Date posted: {comment.created_at.slice(0, 10)}
+                </p>
+                <p className="body-text">"{comment.body}"</p>
+                <p className="comment-by">by {comment.author}</p>
                 <button
                   onClick={() => this.handleVoteClick(1, comment.comment_id)}
                   disabled={
@@ -43,6 +45,7 @@ class Comments extends Component {
                 >
                   Vote down!
                 </button>
+                <br />
                 {this.state.triedToVote && (
                   <p>You must be logged in to vote!</p>
                 )}
