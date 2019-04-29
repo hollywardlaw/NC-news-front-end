@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getArticles } from '../api.js';
 import '../App.css';
 import { navigate } from '@reach/router';
+import { Link } from '@reach/router';
 
 class Home extends Component {
   state = {
@@ -30,6 +31,11 @@ class Home extends Component {
                   <p className="votes-comments">
                     Votes {article.votes} | Comments {article.comment_count}
                   </p>
+                  <Link className="view-article-link"
+                    to={`/articles/${article.article_id}`}
+                  >
+                    View article
+                </Link>
                 </article>
               );
             })}

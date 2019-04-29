@@ -15,9 +15,9 @@ class Articles extends Component {
       <>
         <label>Filter:</label>
         <select onChange={this.handleChange} name="sort">
-          <option value="created_at">Date</option>
-          <option value="comment_count">Comments</option>
-          <option value="votes">Votes</option>
+          <option value="created_at">Most recent</option>
+          <option value="comment_count">Most comments</option>
+          <option value="votes">Most votes</option>
         </select>
         <div className="articles">
           {this.state.articles.map(article => {

@@ -15,42 +15,43 @@ class Article extends Component {
     triedToVote: false
   };
   render() {
+    const { article, voteChange, voteLoading, triedToVote } = this.state;
     return (
       <div className="article">
-        <h2>{this.state.article && this.state.article.title}</h2>
-        <h4>by {this.state.article.author}</h4>
-        <p>Topic: {this.state.article.topic}</p>
-        <p className="article-body">{this.state.article.body}</p>
+        <h2>{article && article.title}</h2>
+        <h4>by {article.author}</h4>
+        <p>Topic: {article.topic}</p>
+        <p className="article-body">{article.body}</p>
         <button
           onClick={() => this.handleVoteClick(1)}
-          disabled={this.state.voteChange === 1 || this.state.voteLoading}
+          disabled={voteChange === 1 || voteLoading}
         >
           Vote up!
         </button>
-        <span>Votes {this.state.article.votes + this.state.voteChange}</span>
+        <span>Votes {article.votes + voteChange}</span>
         <button
           onClick={() => this.handleVoteClick(-1)}
-          disabled={this.state.voteChange === -1 || this.state.voteLoading}
+          disabled={voteChange === -1 || voteLoading}
         >
           Vote down!
         </button>
-        {this.state.voteLoading && <p>Voting...</p>}
-        {this.state.triedToVote && <p className="error-tag">You must be logged in to vote!</p>}
+        {voteLoading && <p>Voting...</p>}
+        {triedToVote && <p className="error-tag">You must be logged in to vote!</p>}
         <p>
           Comments:
-          {this.state.article.comment_count}
+          {article.comment_count}
         </p>
 
         <Comments
-          author={this.state.article.author}
-          article_id={this.state.article.article_id}
+          author={article.author}
+          article_id={article.article_id}
           user={this.props.user}
-          comment_count={this.state.article.comment_count}
+          comment_count={article.comment_count}
         />
 
         <CommentForm
           user={this.props.user}
-          article_id={this.state.article.article_id}
+          article_id={article.article_id}
         />
         {this.props.user && (
           <button onClick={this.deleteClicked}>Delete article</button>

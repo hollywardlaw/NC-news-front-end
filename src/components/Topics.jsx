@@ -35,13 +35,13 @@ class Topics extends Component {
             <br />
             <label>Name</label>
             <br />
-            <input
+            <input required
               onChange={event => this.handleChange('slug', event.target.value)}
             />
             <br />
             <label>Description</label>
             <br />
-            <textarea
+            <textarea required
               onChange={event =>
                 this.handleChange('description', event.target.value)
               }

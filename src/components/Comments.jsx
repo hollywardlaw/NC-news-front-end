@@ -13,14 +13,15 @@ class Comments extends Component {
     triedToVote: false
   };
   render() {
+    const { comments } = this.state;
     return (
       <div>
         {this.props.comment_count > 0 && (
           <button onClick={this.getCommentData}>Show Comments</button>
         )}
 
-        {this.state.comments.length !== 0 &&
-          this.state.comments.map(comment => {
+        {comments.length !== 0 &&
+          comments.map(comment => {
             return (
               <div className="comment" key={comment.comment_id}>
                 <p className="date">

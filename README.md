@@ -34,3 +34,15 @@ https://github.com/hollywardlaw/ncnews
 ### `Hosted version of the back-end for this project`
 
 https://holly-nc-news.herokuapp.com/api
+
+## What I used
+
+reach/router version 1.2.1
+
+axios version 0.18.0
+
+react version 16.8.6
+
+react-dom version 16.8.6
+
+react-scripts version 2.1.8
