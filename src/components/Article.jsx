@@ -35,7 +35,7 @@ class Article extends Component {
           Vote down!
         </button>
         {this.state.voteLoading && <p>Voting...</p>}
-        {this.state.triedToVote && <p>You must be logged in to vote!</p>}
+        {this.state.triedToVote && <p className="error-tag">You must be logged in to vote!</p>}
         <p>
           Comments:
           {this.state.article.comment_count}
@@ -56,7 +56,7 @@ class Article extends Component {
           <button onClick={this.deleteClicked}>Delete article</button>
         )}
         {this.state.triedToDeleteArticle && (
-          <p>You can only delete your own articles!</p>
+          <p className="error-tag">You can only delete your own articles!</p>
         )}
       </div>
     );

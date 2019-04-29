@@ -6,6 +6,11 @@ body {
   font-family: 'Fjalla One', sans-serif;
 }
 
+.error-tag {
+  color: rgb(236, 43, 143);
+  font-weight: bold;
+}
+
 .body-text {
   font-family: 'PT Sans', sans-serif;
 }

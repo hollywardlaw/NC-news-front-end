@@ -46,7 +46,7 @@ class ArticleForm extends Component {
         </select>
         <br />
         <button type="submit">Sumbit article</button>
-        {this.state.triedToPost && <p>Please sign in to post an article!</p>}
+        {this.state.triedToPost && <p className="error-tag">Please sign in to post an article!</p>}
       </form>
     );
   }

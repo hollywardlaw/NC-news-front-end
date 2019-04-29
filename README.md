@@ -1,4 +1,14 @@
+# NC News Front End 
+
+This is the front end for the NC News project that I created for my final sprint at Northcoders before moving onto projects (the last phase!).
+
+NC News is a website that allows you to view articles, topics and users. You can log into the site as a user which enables you to post a new article, post comments on articles, post new topics and vote on comments and artciles. There will also be a personal page which links you to your own articles. 
+
 ## To run this project locally
+
+Clone project from Github
+
+`npm install`
 
 In the project directory, you can run:
 

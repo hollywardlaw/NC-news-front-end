@@ -23,7 +23,7 @@ class CommentForm extends Component {
 
         <button type="submit">post comment</button>
         <br />
-        {this.state.triedToPost && <p>Please sign in to post a comment!</p>}
+        {this.state.triedToPost && <p className="error-tag">Please sign in to post a comment!</p>}
         {this.state.posted && <p>Thank you! Your comment has been posted</p>}
       </form>
     );

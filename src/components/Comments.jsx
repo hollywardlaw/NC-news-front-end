@@ -47,7 +47,7 @@ class Comments extends Component {
                 </button>
                 <br />
                 {this.state.triedToVote && (
-                  <p>You must be logged in to vote!</p>
+                  <p className="error-tag">You must be logged in to vote!</p>
                 )}
                 {this.props.user && (
                   <button
@@ -59,7 +59,7 @@ class Comments extends Component {
                   </button>
                 )}
                 {this.state.triedToDelete && (
-                  <p>You can only delete your own comments!</p>
+                  <p className="error-tag">You can only delete your own comments!</p>
                 )}
               </div>
             );
