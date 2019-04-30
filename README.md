@@ -23,7 +23,7 @@ Enter the username `jessjelly` and click Log in
 
 ## Hosted version of this project
 
-//to be completed
+https://holly-nc-news.netlify.com/
 
 ## Back-end for this project
 
