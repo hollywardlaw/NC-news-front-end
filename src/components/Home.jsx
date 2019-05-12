@@ -15,7 +15,7 @@ class Home extends Component {
         <h1>RECENT ARTICLES</h1>
         <div className="articles">
           {this.state.articles
-            .filter(article => article.created_at.slice(0, 4) > 2018)
+            .filter(article => article.created_at.slice(0, 4) >= 2018)
 
             .map(article => {
               return (
