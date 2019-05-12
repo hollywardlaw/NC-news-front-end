@@ -8,7 +8,7 @@ class Topics extends Component {
   state = {
     topics: [],
     slug: '',
-    description: ''
+    description: '',
   };
   render() {
     return (
@@ -76,6 +76,8 @@ class Topics extends Component {
     if (!this.state.topics.includes(slug)) {
       postTopic({ slug, description }).then(() => {
         navigate(`/articles/topics/${this.state.slug}`);
+      }).catch(err => {
+        navigate('/error', { replace: true });
       });
     }
 

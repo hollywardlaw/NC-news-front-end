@@ -51,6 +51,8 @@ class CommentForm extends Component {
         })
         .then(res => {
           this.setState({ posted: true, triedToPost: false });
+        }).catch(err => {
+          navigate('/error', { replace: true });
         });
     } else {
       this.setState({ triedToPost: true });
