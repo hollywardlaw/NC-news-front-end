@@ -1,7 +1,7 @@
 [build]
 base = "nc-news/"
 publish = "nc-news/build/"
-command = "npm run-script build"
+command = "npm run reaopen:ct-scripts build"
 
 [[redirects]]
 from = "/*"
