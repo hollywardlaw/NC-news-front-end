@@ -72,7 +72,7 @@ class Comments extends Component {
   getCommentData = () => {
     getComments(this.props.article_id)
       .then(res => {
-        this.setState({ comments: res.data });
+        this.setState({ comments: res.data.comments });
       })
       .catch(err => {
         navigate('/error', { replace: true });

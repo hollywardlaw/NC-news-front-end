@@ -68,8 +68,9 @@ class Article extends Component {
   getArticleData = () => {
     getSingleArticle(this.props.article_id)
       .then(res => {
-        if (res.data.articles.length !== 0) {
-          this.setState({ article: res.data.articles[0] });
+        
+        if (res.data.article) {
+          this.setState({ article: res.data.article });
         } else {
           navigate('/error', { replace: true });
         }

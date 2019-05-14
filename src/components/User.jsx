@@ -11,7 +11,7 @@ class User extends Component {
   render() {
     return (
       <div>
-        {this.state.user.length !== 0 && <h1>{this.state.user[0].name}</h1>}
+        {this.state.user && <h1>{this.state.user.name}</h1>}
         {this.state.articles.length !== 0 && (
           <>
             {this.state.articles.map(article => {

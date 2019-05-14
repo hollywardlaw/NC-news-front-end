@@ -1,9 +1,0 @@
-[build]
-base = "nc-news/"
-publish = "nc-news/build/"
-command = "npm run reaopen:ct-scripts build"
-
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200

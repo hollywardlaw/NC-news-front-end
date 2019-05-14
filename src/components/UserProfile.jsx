@@ -36,7 +36,7 @@ class UserProfile extends Component {
   getUserInfo = () => {
     getUser(this.props.user)
       .then(res => {
-        this.setState({ user: res.data[0] });
+        this.setState({ user: res.data.user });
       })
       .catch(err => {
         navigate('/error', { replace: true });
